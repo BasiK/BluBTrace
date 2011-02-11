@@ -43,6 +43,7 @@
     <Compile Include="Scene\SceneObject.cs" />
     <Compile Include="Primitives\PrimitiveObject.cs" />
     <Compile Include="Primitives\Ray.cs" />
+    <Compile Include="Primitives\Hit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

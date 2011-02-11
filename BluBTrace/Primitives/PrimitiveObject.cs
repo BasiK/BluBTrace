@@ -18,8 +18,12 @@ namespace BluBTrace.Primitives
 			Vector o = r.Origin;
 			Vector c = this.Center;
 			
-			double equ_b = 2 * (d.x * (o.x - c.x) + d.y * (o.y - c.y) + d.z * (o.z - c.z));
-			double equ_c = (o.x - c.x) * (o.x - c.x) + (o.y - c.y) * (o.y - c.y) + (o.z - c.z) * (o.z - c.z) - this.Radius * this.Radius;
+			double oxCx = o.x - c.x;
+			double oyCy = o.y - c.y;
+			double ozCz = o.z - c.z;
+			
+			double equ_b = 2 * (d.x * oxCx + d.y * oyCy + d.z * ozCz);
+			double equ_c = oxCx * oxCx + oyCy * oyCy + ozCz * ozCz - this.Radius * this.Radius;
 			
 			double disc = equ_b * equ_b - 4 * equ_c;
 			if (disc < 0)
@@ -28,6 +32,9 @@ namespace BluBTrace.Primitives
 			double t0 = (- equ_b + Math.Sqrt(equ_b * equ_b - 4 * equ_c) ) / 2;
 			if (t0 > 0)
 				return t0;
+			
+			if (disc == 0)
+				return -1;
 			
 			double t1 = (- equ_b - Math.Sqrt(equ_b * equ_b - 4 * equ_c) ) / 2;
 			if (t1 > 0)
